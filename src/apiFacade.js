@@ -54,7 +54,7 @@ function apiFacade() {
 
     let role = getRole();
 
-    return fetch(URL + "/api/info/" + role, options).then(handleHttpErrors);
+    return fetch(URL + "/api/users/" + role, options).then(handleHttpErrors);
   };
 
 
@@ -63,11 +63,7 @@ function apiFacade() {
 
     return fetch(URL + "/api/users/catfacts/", options).then(handleHttpErrors);
   }
-  const fetchStarwars = () => {
-    const options = makeOptions("GET");
-
-    return fetch(URL + "/api/users/parrallel/", options).then(handleHttpErrors);
-  };
+  
 
   const fetchUserByPhone = (phone) => {
     const options = makeOptions("GET");
@@ -101,10 +97,20 @@ function apiFacade() {
     return fetch(URL + "/api/users/allzips/", options).then(handleHttpErrors);
   };
 
-  const createUser = () => {
-
-
-  };
+  const createUser = (user) => {
+    const options = makeOptions("POST", true, {
+      userName: user.userName,
+      userPass: user.userPass,
+      fName: user.fName, 
+      lName: user.lName,
+      phone: user.phone,
+      street: user.street,
+      zip: user.zip,
+      city: user.city,
+      hobby: [{name: user.hobby}]
+    })
+    return fetch(URL + "/api/users/createUser/", options).then(handleHttpErrors);
+  }
 
   const makeOptions = (method, addToken, body) => {
     var opts = {
@@ -130,14 +136,14 @@ function apiFacade() {
     login,
     logout,
     fetchData,
-    fetchStarwars,
     getRole,
     fetchUserByPhone,
     fetchUsersByHobby,
     fetchCountByHobby, 
     fetchUsersByCity,
     fetchAllZips,
-    fetchCatFacts
+    fetchCatFacts,
+    createUser
   };
 }
 

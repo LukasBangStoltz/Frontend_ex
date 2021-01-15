@@ -2,7 +2,7 @@ import { useState } from "react";
 import facade from "./apiFacade.js";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useRouteMatch, BrowserRouter as Router } from "react-router-dom";
-import AddEditUser from "./AddEditUser.js"
+import AddEditUser from "./AddEditUser.js";
 function User() {
   const userObjList = [
     {
@@ -15,10 +15,13 @@ function User() {
       phone: "",
       zip: "",
       city: "",
-    }
+    },
   ];
+   
 
-  
+
+
+  let pik = "pik";
 
   const allZipsList = [];
   const [users, setUsers] = useState(userObjList);
@@ -147,8 +150,8 @@ function User() {
         </div>
       </div>
       <Router>
-      <AddEditUser />
-    </Router>
+        <AddEditUser pik={pik}/>
+      </Router>
     </div>
   );
 }
