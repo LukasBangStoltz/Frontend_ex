@@ -57,11 +57,55 @@ function apiFacade() {
     return fetch(URL + "/api/info/" + role, options).then(handleHttpErrors);
   };
 
+
+  const fetchCatFacts = () => {
+    const options = makeOptions("GET");
+
+    return fetch(URL + "/api/users/catfacts/", options).then(handleHttpErrors);
+  }
   const fetchStarwars = () => {
     const options = makeOptions("GET");
 
-    return fetch(URL + "/api/info/parrallel/", options).then(handleHttpErrors);
+    return fetch(URL + "/api/users/parrallel/", options).then(handleHttpErrors);
   };
+
+  const fetchUserByPhone = (phone) => {
+    const options = makeOptions("GET");
+
+    return fetch(URL + "/api/users/phonenumber/" + phone, options).then(
+      handleHttpErrors
+    );
+  };
+
+  const fetchUsersByHobby = (hobby) => {
+    const options = makeOptions("GET");
+
+    return fetch(URL + "/api/users/hobby/" + hobby, options).then(handleHttpErrors);
+  };
+
+  const fetchCountByHobby = (hobby) => {
+    const options = makeOptions("GET");
+
+    return fetch(URL + "/api/users/hobbycount/" + hobby, options).then(handleHttpErrors);
+  };
+
+  const fetchUsersByCity = (city) => {
+    const options = makeOptions("GET");
+
+    return fetch(URL + "/api/users/city/" + city, options).then(handleHttpErrors);
+  };
+
+  const fetchAllZips = () => {
+    const options = makeOptions("GET");
+
+    return fetch(URL + "/api/users/allzips/", options).then(handleHttpErrors);
+  };
+
+  const createUser = () => {
+
+
+  };
+
   const makeOptions = (method, addToken, body) => {
     var opts = {
       method: method,
@@ -87,7 +131,13 @@ function apiFacade() {
     logout,
     fetchData,
     fetchStarwars,
-    getRole
+    getRole,
+    fetchUserByPhone,
+    fetchUsersByHobby,
+    fetchCountByHobby, 
+    fetchUsersByCity,
+    fetchAllZips,
+    fetchCatFacts
   };
 }
 
