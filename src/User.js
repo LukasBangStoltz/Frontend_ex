@@ -87,7 +87,7 @@ function User() {
               <td>{user.street}</td>
               <td>{user.city}</td>
               <td>{user.zip}</td>
-              <td>{user.hobby.map((hobby) => hobby.name).join(",")}</td>
+              <td>{user.hobby.map((hobby) => hobby.name).join(", ")}</td>
             </tr>
           ))}
         </thead>
